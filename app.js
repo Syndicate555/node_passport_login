@@ -5,6 +5,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const dotenv = require('dotenv')
+const connectDB = require('./config/db') // Connecting the MongoDB database
 
 // load the config file
 dotenv.config({path: './config/config.env'})
@@ -51,6 +52,7 @@ app.use(function(req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 
-const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`Server running on  ${PORT}`));
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, console.log(`Surver running in ${process.env.NODE_ENV} mode on port ${PORT}`))
