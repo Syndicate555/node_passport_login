@@ -14,17 +14,7 @@ const app = express();
 // Passport Config
 require('./config/passport')(passport);
 
-// DB Config
-const db = require('./config/keys').mongoURI;
-
-// Connect to MongoDB
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true ,useUnifiedTopology: true}
-  )
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+connectDB() // Connecting MongoDB
 
 // EJS
 app.use(expressLayouts);
